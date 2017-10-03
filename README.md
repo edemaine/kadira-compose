@@ -8,6 +8,8 @@ Edit `.env` to change HOST and EMAIL environment variables.
 
 ## Execution
 
+* Install/download [docker-compose](https://docs.docker.com/compose/install/#install-compose)
+
 * Launch dockers, and initialize Mongo replica set:
 
   ```
