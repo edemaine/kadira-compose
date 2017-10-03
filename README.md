@@ -1,12 +1,15 @@
 # kadira-compose
 
+This will get [open-source Kadira](https://github.com/kadira-open/kadira-server)
+running on a dedicated host, almost fully automatically using `docker-compose`.
+
 Based on https://forums.meteor.com/t/running-a-own-kadira-instance-update-now-with-a-guide/35938/34
 
 ## Configuration
 
 Edit `.env` to change HOST and EMAIL environment variables.
 
-## Execution
+## Running
 
 * Install/download [docker-compose](https://docs.docker.com/compose/install/#install-compose)
 
