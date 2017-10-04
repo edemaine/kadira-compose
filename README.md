@@ -10,6 +10,7 @@ Specifically, it includes the following dockers:
 * [letsencrypt-nginx-proxy-companion](https://github.com/JrCs/docker-letsencrypt-nginx-proxy-companion):
   Acquires Let's Encrypt SSL certificate to support https access.
 * kadira-engine: This is where Meteor apps send their data.
+  Accessible via `http://HOST:11011` or `https://HOST:22022`.
 * kadira-rma: This computes statistics every minute as needed by kadira-ui.
 * kadira-ui: Meteor app to present Kadira user interface,
   accessible via `http://HOST:4000`.
