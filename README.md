@@ -22,6 +22,10 @@ What I've added here is `https` access to kadira-engine (via nginx-proxy),
 and a built-in Mongo server instead of relying on an external service
 like mlab.com.
 
+Unfortunately, because of the way letsencrypt-nginx-proxy-companion works,
+I need ports 80 and 443 to point to kadira-engine instead of kadira-ui.
+So you need to access the UI via http port 4000.
+
 ## Configuration
 
 * **Expose** the following ports on your host:
