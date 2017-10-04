@@ -71,7 +71,7 @@ So you need to access the UI via http port 4000.
 ## Meteor Setup
 
 If your server is running on `https`, use the port-22022 endpoint
-to kadira-engine.  For example:
+to kadira-engine.  For example, add the following line to `server/kadira.js`:
 
 ```javascript
 Kadira.connect(APP_ID, APP_SECRET, {endpoint: 'https://HOST:22022'})
