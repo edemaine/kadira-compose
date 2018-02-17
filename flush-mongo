@@ -1,0 +1,19 @@
+#!/bin/sh
+## This script should be in the same directory as docker-compose.yml
+cd "`dirname $0`"
+## Add current directory to path, in case docker-compose is here
+PATH=".:$PATH"
+## Compute the date 10 days ago
+DATE="`date -I -d '10 days'`T00:00:00.000Z"
+## Delete all entries before that date
+docker-compose exec -T mongo mongo kadira <<EOF
+db.getCollection('prodStats').remove({"time": {"\$lte": new ISODate("$DATE")}})
+db.getCollection('pubMetrics').remove({"_id.time": {"\$lte": new ISODate("$DATE")}})
+db.getCollection('pubTraces').remove({"startTime": {"\$lte": new ISODate("$DATE")}})
+db.getCollection('rawErrorMetrics').remove({"value.startTime": {"\$lte": new ISODate("$DATE")}})
+db.getCollection('rawMethodsMetrics').remove({"value.startTime": {"\$lte": new ISODate("$DATE")}})
+db.getCollection('rawPubMetrics').remove({"value.startTime": {"\$lte": new ISODate("$DATE")}})
+db.getCollection('rawSystemMetrics').remove({"value.startTime": {"\$lte": new ISODate("$DATE")}})
+db.getCollection('rmaLogs').remove({"startedAt": {"\$lte": new ISODate("$DATE")}})
+db.getCollection('systemMetrics').remove({"_id.time": {"\$lte": new ISODate("$DATE")}})
+EOF

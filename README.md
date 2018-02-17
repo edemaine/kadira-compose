@@ -18,9 +18,10 @@ Specifically, it includes the following dockers:
 The Dockerification of open-source Kadira was originally done by
 [Vlad Holubiev](https://github.com/vladgolubev/), as described in
 [this Meteor forum post](https://forums.meteor.com/t/running-a-own-kadira-instance-update-now-with-a-guide/35938/34).
-What I've added here is `https` access to kadira-engine (via nginx-proxy),
-and a built-in Mongo server instead of relying on an external service
-like mlab.com.
+What I've added here is:
+* `https` access to kadira-engine (via nginx-proxy)
+* built-in Mongo server instead of relying on an external service like mlab.com
+* cron job to clear out old database entries (see below)
 
 Unfortunately, because of the way letsencrypt-nginx-proxy-companion works,
 I need ports 80 and 443 to point to kadira-engine instead of kadira-ui.
@@ -44,6 +45,12 @@ So you need to access the UI via http port 4000.
 * **Clone** this repo.
 
 * **Edit** `.env` to change `HOST` and `EMAIL` environment variables.
+
+* If you want to **clear out database of old entries**
+  (as [recommended here](https://forums.meteor.com/t/running-a-own-kadira-instance-update-now-with-a-guide/35938/170)
+  for long-term performance), add the included `crontab` to your existing
+  crontab, or if you don't have one, just run `crontab crontab` (on Linux).
+  You may need to edit the path to the included `flush-mongo` script.
 
 ## Running
 
