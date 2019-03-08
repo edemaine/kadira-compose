@@ -4,7 +4,7 @@ cd "`dirname $0`"
 ## Add current directory to path, in case docker-compose is here
 PATH=".:$PATH"
 ## Compute the date 10 days ago
-DATE="`date -I -d '10 days'`T00:00:00.000Z"
+DATE="`date -I -d '-10 days'`T00:00:00.000Z"
 ## Delete all entries before that date
 docker-compose exec -T mongo mongo kadira <<EOF
 db.getCollection('prodStats').remove({"time": {"\$lte": new ISODate("$DATE")}})
