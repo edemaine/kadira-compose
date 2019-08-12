@@ -1,1 +1,1 @@
-0 3 * * * $HOME/kadira/flush-mongo
+0 3 * * * $HOME/kadira-compose/flush-mongo

@@ -57,9 +57,9 @@ So you need to access the UI via http port 4000.
 * Launch dockers, and initialize Mongo replica set:
 
   ```
-  ./docker-compose up -d mongo
-  ./docker-compose exec mongo mongo --eval 'rs.initiate({_id:"kadira", members: [{_id: 0, host: "mongo:27017"}]})'
-  ./docker-compose up -d
+  docker-compose up -d mongo
+  docker-compose exec mongo mongo --eval 'rs.initiate({_id:"kadira", members: [{_id: 0, host: "mongo:27017"}]})'
+  docker-compose up -d
   ```
 
 * Open `http://HOST:4000` and login with email `admin@gmail.com`
@@ -70,7 +70,7 @@ So you need to access the UI via http port 4000.
 * Upgrade apps to business plan:
 
   ```
-  ./docker-compose exec mongo mongo kadira --eval 'db.apps.update({},{$set:{plan:"business"}},{multi:true})'
+  docker-compose exec mongo mongo kadira --eval 'db.apps.update({},{$set:{plan:"business"}},{multi:true})'
   ```
 
 * Visit `http://HOST:4000` to monitor your apps.
