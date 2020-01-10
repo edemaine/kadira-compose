@@ -56,7 +56,7 @@ So you need to access the UI via http port 4000.
 
 * Launch dockers, and initialize Mongo replica set:
 
-  ```
+  ```sh
   docker-compose up -d mongo
   docker-compose exec mongo mongo --eval 'rs.initiate({_id:"kadira", members: [{_id: 0, host: "mongo:27017"}]})'
   docker-compose up -d
@@ -69,7 +69,7 @@ So you need to access the UI via http port 4000.
 
 * Upgrade apps to business plan:
 
-  ```
+  ```sh
   docker-compose exec mongo mongo kadira --eval 'db.apps.update({},{$set:{plan:"business"}},{multi:true})'
   ```
 
@@ -89,3 +89,14 @@ If your server is running on `http`, use the port-11011 endpoint:
 ```javascript
 Kadira.connect(APP_ID, APP_SECRET, {endpoint: 'http://HOST:11011'})
 ```
+
+## Upgrading
+
+LetsEncrypt recently
+[changed protocols](https://community.letsencrypt.org/t/end-of-life-plan-for-acmev1/88430/7)
+which requires upgrading `letsencrypt-nginx-proxy-companion`.
+You can upgrade all of the non-fixed-version dockers as follows:
+
+* `docker-compose down`: stop all server processes
+* `docker-compose pull`: upgrade dockers to latest versions
+* `docker-compose up -d`: start all server processes
